@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="蓝鲸视频下载器 Windows 版：官方下载、SHA-256 校验与平台授权使用指南。"><link rel="icon" href="/assets/whale.png"><link rel="canonical" href="https://brucetools.com/bluewhale/"><title>蓝鲸视频下载器 · BruceTools</title><style>
+/* Layout: the app's own deep-sea shell — dark ground, cyan ribbon, bordered panels. */
+:root {
+  --ground: #061625;
+  --ground-2: #04101c;
+  --panel: #0d2740;
+  --panel-2: #0a1f36;
+  --line: #14477a;
+  --line-soft: #0f3a63;
+  --ink: #e8f3fd;
+  --ink-soft: #9db6cf;
+  --ink-faint: #6f8ba6;
+  --cyan: #00b4fe;
+  --cyan-deep: #0a7ff0;
+  --green: #28cc88;
+  --amber: #e0b040;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --han: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+         "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--han);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--cyan); }
+
+/* ---- hero with the app's light ribbon ---- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 88% -20%, rgba(0,180,254,.30), transparent 62%),
+    radial-gradient(70% 60% at 98% 10%, rgba(120,220,255,.16), transparent 70%),
+    linear-gradient(180deg, #0a2036, var(--ground));
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: auto -10% 32% 42%;
+  height: 170px;
+  background:
+    radial-gradient(60% 100% at 30% 50%, rgba(0,180,254,.55), transparent 70%),
+    radial-gradient(45% 100% at 70% 46%, rgba(150,230,255,.40), transparent 72%);
+  filter: blur(26px);
+  transform: rotate(-11deg);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; z-index: 1; padding-block: 2.6rem 2.9rem; }
+
+.brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 2.2rem; }
+.brand svg { width: 54px; height: auto; flex: none; }
+.brand-name { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.brand-name b { font-size: 1.375rem; font-weight: 700; letter-spacing: .01em; }
+.chip {
+  font-family: var(--mono); font-size: .75rem; font-weight: 600;
+  color: var(--cyan); background: rgba(0,180,254,.12);
+  border: 1px solid rgba(0,180,254,.4); border-radius: 999px;
+  padding: .08rem .6rem; letter-spacing: .02em;
+}
+.brand .sub { color: var(--ink-faint); font-size: .8125rem; margin-top: .1rem; }
+
+h1 {
+  font-size: clamp(1.9rem, 6.2vw, 2.75rem);
+  line-height: 1.22; margin: 0 0 .8rem;
+  letter-spacing: -.01em; text-wrap: balance;
+}
+.lede { color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
+.lede b { color: var(--ink); font-weight: 600; }
+
+.get { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.3rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: linear-gradient(135deg, #1ab6ff, var(--cyan-deep));
+  color: #04121f; font: inherit; font-weight: 700; font-size: 1.0625rem;
+  text-decoration: none; padding: .9rem 1.9rem;
+  border: 0; border-radius: 11px; cursor: pointer;
+  box-shadow: 0 10px 28px -12px rgba(0,180,254,.75);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -12px rgba(0,180,254,.9); }
+.btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.btn svg { width: 19px; height: 19px; flex: none; }
+.get .alt { font-size: .9375rem; }
+
+.meta {
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: .3rem 1.3rem;
+  font-size: .8125rem; color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.meta b { color: var(--ink-soft); font-weight: 600; }
+
+/* ---- panels, like the app's cards ---- */
+main .wrap { padding-block: 2.5rem; display: grid; gap: 1.1rem; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+.phead { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.2rem; }
+.picon {
+  width: 38px; height: 38px; flex: none;
+  border-radius: 10px; display: grid; place-items: center;
+  background: rgba(0,180,254,.12); border: 1px solid rgba(0,180,254,.3);
+}
+.picon svg { width: 19px; height: 19px; stroke: var(--cyan); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.phead h2 { font-size: 1.0625rem; font-weight: 650; margin: 0; line-height: 1.5; }
+.phead p { font-size: .8125rem; color: var(--ink-faint); margin: 0; }
+
+/* platform rows, as in 平台授权 */
+.sites { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.sites li {
+  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 10px; padding: .6rem .85rem;
+}
+.sites .name { font-weight: 650; min-width: 5.5em; }
+.sites .how { color: var(--ink-soft); font-size: .875rem; flex: 1; min-width: 0; }
+.tag {
+  font-size: .75rem; padding: .05rem .55rem; border-radius: 999px;
+  border: 1px solid currentColor; white-space: nowrap;
+}
+.tag.free { color: var(--green); }
+.tag.login { color: var(--amber); }
+
+h3 { font-size: .9375rem; margin: 0 0 .25rem; font-weight: 650; }
+p { margin: 0 0 .9rem; }
+p:last-child { margin-bottom: 0; }
+.panel > .block + .block { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); }
+.block p { color: var(--ink-soft); font-size: .9375rem; }
+
+.caution {
+  background: rgba(224,176,64,.09);
+  border: 1px solid rgba(224,176,64,.35);
+  border-radius: 10px; padding: .9rem 1rem;
+}
+.caution h3 { color: var(--amber); }
+.caution p { color: #e7d3ab; }
+
+.cmd, .hash code {
+  font-family: var(--mono); font-size: .8125rem; line-height: 1.65;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 8px; padding: .7rem .8rem; color: var(--ink);
+}
+.cmd { display: block; overflow-x: auto; white-space: pre; margin: 0 0 .9rem; }
+.hash { display: grid; gap: .6rem; }
+.hash code { display: block; word-break: break-all; color: var(--cyan); }
+.copy {
+  justify-self: start;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--cyan);
+  font: inherit; font-size: .8125rem; padding: .35rem .95rem;
+  border-radius: 8px; cursor: pointer;
+}
+.copy:hover { border-color: var(--cyan); }
+.copy:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.faq { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.25rem; }
+.faq p { color: var(--ink-soft); font-size: .9375rem; }
+
+footer { background: var(--ground-2); border-top: 1px solid var(--line-soft); }
+footer .wrap { padding-block: 1.8rem 2.4rem; }
+footer p { font-size: .8125rem; color: var(--ink-faint); max-width: 40rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+main .wrap{grid-template-columns:minmax(0,1fr)}.panel,.phead>div{min-width:0}@media(max-width:540px){.panel{padding:1rem}.sites .how{flex-basis:100%;order:3}}
+</style></head><body>
+
+<nav class="wrap" aria-label="主导航" style="padding-block:1rem;display:flex;flex-wrap:wrap;gap:1.5rem"><a href="/">← BruceTools</a><a href="#guide">使用指南</a><a href="https://github.com/chichangbang1-arch/bluewhale-downloader/releases/tag/v3.3.13">发行说明 ↗</a></nav><header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 68 40" role="img" aria-label="蓝鲸">
+        <defs>
+          <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5fd2ff"/><stop offset="1" stop-color="#0a7ff0"/>
+          </linearGradient>
+        </defs>
+        <path d="M6 22C6 13 17 6.5 29.5 6.5c10.5 0 17.5 4.8 20.8 11L61.5 10c1.2 5.8-.3 9.4-3.2 12 2.9 2.6 4.4 6.2 3.2 12l-11.2-7.5c-3.3 6.2-10.3 11-20.8 11C17 37.5 6 31 6 22Z" fill="url(#wg)"/>
+        <circle cx="17.5" cy="19" r="1.9" fill="#04121f"/>
+      </svg>
+      <div>
+        <div class="brand-name"><b>蓝鲸视频下载器</b><span class="chip">v3.3.13</span></div>
+        <div class="sub">Windows 视频下载工具 · 批量任务 · 本地保存</div>
+      </div>
+    </div>
+
+    <h1>把刷到的视频，存进自己电脑</h1>
+    <p class="lede">粘贴链接，在电脑上管理视频号、抖音、YouTube 等平台的下载任务。<b>当前提供 Windows 桌面版，免费使用。</b></p>
+
+    <div class="get">
+      <a class="btn" href="https://github.com/chichangbang1-arch/bluewhale-downloader/releases/download/v3.3.13/BlueWhaleDownloader_Setup_v3.3.13_preview_20261110d.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/>
+        </svg>
+        下载 Windows 版
+      </a>
+      <span class="alt"><a href="https://github.com/chichangbang1-arch/bluewhale-downloader/releases">查看全部版本</a></span>
+    </div>
+
+    <ul class="meta">
+      <li><b>约 196 MB（206,207,696 字节）</b></li>
+      <li>Windows 10 / 11（64 位）</li>
+      <li>2026-11-10 更新</li>
+      <li>免费 · 无内购</li>
+    </ul>
+  </div>
+</header>
+
+<main><div class="wrap" style="padding-top:2rem"><img src="/assets/bluewhale-desktop.png" alt="蓝鲸3.3.13真实Windows界面：下载任务与平台授权卡片" width="2704" height="1620" style="display:block;width:100%;height:auto;border:1px solid #14477a;border-radius:12px"><p style="color:#9db6cf;font-size:.8rem;margin-top:.6rem">实际软件界面 · 隔离测试环境</p></div>
+  <div class="wrap">
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span>
+        <div>
+          <h2>支持这些平台</h2>
+          <p>不同平台和视频可能需要登录；只能保存你有权访问和下载的内容</p>
+        </div>
+      </div>
+      <ul class="sites">
+        <li><span class="name">微信视频号</span><span class="how">通过软件打开独立浏览器登录，过期后需重新登录</span><span class="tag login">需登录</span></li>
+        <li><span class="name">抖音</span><span class="how">根据视频与平台要求，在独立浏览器中授权</span><span class="tag login">需登录</span></li>
+        <li><span class="name">YouTube</span><span class="how">公开视频直接下载</span><span class="tag free">免登录</span></li>
+        <li><span class="name">X（推特）</span><span class="how">根据视频与平台要求，在独立浏览器中授权</span><span class="tag login">需登录</span></li>
+        <li><span class="name">小红书</span><span class="how">只支持视频，图文笔记不行</span><span class="tag login">需登录</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.4 3.4 8.1 8 9 4.6-.9 8-4.6 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div>
+          <h2 id="guide">安装与使用</h2>
+          <p>都是真实遇到过的情况，提前说清楚</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>三步开始使用</h3><p>1. 下载安装包并核对校验值。<br>2. 启动蓝鲸，粘贴你有权保存的视频链接。<br>3. 按需在「平台授权」登录，再添加下载任务；下载文件保存在电脑上。</p><h3>支持 Windows 电脑</h3>
+        <p>当前安装包适用于 Windows 10 / 11（64 位）。</p>
+      </div>
+
+      <div class="block">
+        <div class="caution">
+          <h3>安装包签名与文件校验</h3>
+          <p>当前安装包未做代码签名。本页提供 SHA-256 校验值及 PowerShell 核对方法。如果安全软件拦截，请自行判断是否继续。</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>下完可以核对一下文件</h3>
+        <p>想确认文件没被篡改，在下载目录里按住 Shift 右键，选「在此处打开 PowerShell 窗口」，粘贴这条回车：</p>
+        <code class="cmd">Get-FileHash .\BlueWhaleDownloader_Setup_v3.3.13_preview_20261110d.exe -Algorithm SHA256</code>
+        <p>出来的那串应该和下面这串一模一样：</p>
+        <div class="hash">
+          <code id="sha">46228a873f484c178e127162665d4acf4d9bc7c997a5ae1b962646d404662189</code>
+          <button class="copy" id="copy" type="button">复制校验值</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.3-2.7 4"/><path d="M12 17.5h.01"/></svg></span>
+        <div>
+          <h2>常见问题</h2>
+          <p>用户问得最多的四个</p>
+        </div>
+      </div>
+      <ul class="faq">
+        <li>
+          <h3>要钱吗？会不会偷偷上传我的东西？</h3>
+          <p>当前版本免费使用。解析和下载会连接对应平台，检查更新会连接更新服务器；持久化的平台授权信息使用 Windows 用户加密方式保存在本机。本站不要求你上传授权文件。</p>
+        </li>
+        <li>
+          <h3>点「平台授权」没反应，浏览器起不来</h3>
+          <p>授权功能会寻找本机 Edge 或 Chrome。自 3.3.11 起，浏览器均不可用时会给出明确提示。若两者均不可用，请按错误提示检查浏览器是否安装；公司电脑也可能有管理策略限制，请联系管理员。</p>
+        </li>
+        <li>
+          <h3>下载失败，提示可能需要重新登录</h3>
+          <p>先到「平台授权」重新登录那个平台，再在浏览器里把这条视频播一遍，确认能正常播放，然后回软件重试。如果别的能下、只有这条不行，可能是该视频的访问或解析限制，请结合故障诊断信息进一步确认。</p>
+        </li>
+        <li>
+          <h3>怎么更新到新版本？</h3>
+          <p>软件会自己检查，有新版本时提示，点「立即更新」就自动下载安装并重启，不用再来这个页面。3.2.0 以下的老版本不支持自动更新，要重新下载安装包。</p>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>项目主页与历史版本：<a href="https://github.com/chichangbang1-arch/bluewhale-downloader/releases">GitHub</a></p>
+    <p style="margin-top:.6rem">请只下载你自己有权保存的内容，用于个人学习或备份。软件不会破解付费内容，也不会绕过平台的访问限制；下载他人作品再传播可能侵犯著作权，请自行判断并承担责任。</p>
+  </div>
+</footer>
+
+<script src="/assets/copy.js" defer></script>
+</body></html>
