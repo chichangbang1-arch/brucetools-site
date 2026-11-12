@@ -40,8 +40,8 @@ body:not(.download-page) .hero::before{content:"";position:absolute;z-index:-1;p
 .product-icon img{height:auto}
 
 /* Large header lockup */
-.brand-header img{display:block;height:72px;width:auto}
-.nav,.download-page>nav{padding-block:16px}
-@media(max-width:1000px){.brand-header img{height:58px}}
-@media(max-width:680px){.brand-header img{height:44px}}
+.brand-header img{display:block;height:84px;width:auto}
+.nav,.download-page>nav{padding-block:12px}
+@media(max-width:1000px){.brand-header img{height:66px}}
+@media(max-width:680px){.brand-header img{height:50px}}
 @media(hover:hover) and (prefers-reduced-motion:no-preference){.brand-header img{transition:filter .2s}.brand-header:hover img{filter:drop-shadow(0 0 10px #62cfff55)}}
