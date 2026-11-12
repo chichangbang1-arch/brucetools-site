@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="蓝鲸选题雷达 Windows 版：按关键词发现 B站近期爆款、跟踪对标账号、生成选题报告。官方下载与 SHA-256 校验。"><link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="/assets/favicon.ico"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="canonical" href="https://brucetools.com/radar/"><title>蓝鲸选题雷达 · BruceTools</title><style>
+/* Layout: the app's own deep-sea shell — dark ground, cyan ribbon, bordered panels. */
+:root {
+  --ground: #061625;
+  --ground-2: #04101c;
+  --panel: #0d2740;
+  --panel-2: #0a1f36;
+  --line: #14477a;
+  --line-soft: #0f3a63;
+  --ink: #e8f3fd;
+  --ink-soft: #9db6cf;
+  --ink-faint: #6f8ba6;
+  --cyan: #00b4fe;
+  --cyan-deep: #0a7ff0;
+  --green: #28cc88;
+  --amber: #e0b040;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --han: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+         "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--han);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--cyan); }
+
+/* ---- hero with the app's light ribbon ---- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 88% -20%, rgba(0,180,254,.30), transparent 62%),
+    radial-gradient(70% 60% at 98% 10%, rgba(120,220,255,.16), transparent 70%),
+    linear-gradient(180deg, #0a2036, var(--ground));
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: auto -10% 32% 42%;
+  height: 170px;
+  background:
+    radial-gradient(60% 100% at 30% 50%, rgba(0,180,254,.55), transparent 70%),
+    radial-gradient(45% 100% at 70% 46%, rgba(150,230,255,.40), transparent 72%);
+  filter: blur(26px);
+  transform: rotate(-11deg);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; z-index: 1; padding-block: 2.6rem 2.9rem; }
+
+.brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 2.2rem; }
+.brand svg { width: 54px; height: auto; flex: none; }
+.brand-name { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.brand-name b { font-size: 1.375rem; font-weight: 700; letter-spacing: .01em; }
+.chip {
+  font-family: var(--mono); font-size: .75rem; font-weight: 600;
+  color: var(--cyan); background: rgba(0,180,254,.12);
+  border: 1px solid rgba(0,180,254,.4); border-radius: 999px;
+  padding: .08rem .6rem; letter-spacing: .02em;
+}
+.brand .sub { color: var(--ink-faint); font-size: .8125rem; margin-top: .1rem; }
+
+h1 {
+  font-size: clamp(1.9rem, 6.2vw, 2.75rem);
+  line-height: 1.22; margin: 0 0 .8rem;
+  letter-spacing: -.01em; text-wrap: balance;
+}
+.lede { color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
+.lede b { color: var(--ink); font-weight: 600; }
+
+.get { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.3rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: linear-gradient(135deg, #1ab6ff, var(--cyan-deep));
+  color: #04121f; font: inherit; font-weight: 700; font-size: 1.0625rem;
+  text-decoration: none; padding: .9rem 1.9rem;
+  border: 0; border-radius: 11px; cursor: pointer;
+  box-shadow: 0 10px 28px -12px rgba(0,180,254,.75);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -12px rgba(0,180,254,.9); }
+.btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.btn svg { width: 19px; height: 19px; flex: none; }
+.get .alt { font-size: .9375rem; }
+
+.meta {
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: .3rem 1.3rem;
+  font-size: .8125rem; color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.meta b { color: var(--ink-soft); font-weight: 600; }
+
+/* ---- panels, like the app's cards ---- */
+main .wrap { padding-block: 2.5rem; display: grid; gap: 1.1rem; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+.phead { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.2rem; }
+.picon {
+  width: 38px; height: 38px; flex: none;
+  border-radius: 10px; display: grid; place-items: center;
+  background: rgba(0,180,254,.12); border: 1px solid rgba(0,180,254,.3);
+}
+.picon svg { width: 19px; height: 19px; stroke: var(--cyan); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.phead h2 { font-size: 1.0625rem; font-weight: 650; margin: 0; line-height: 1.5; }
+.phead p { font-size: .8125rem; color: var(--ink-faint); margin: 0; }
+
+/* platform rows, as in 平台授权 */
+.sites { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.sites li {
+  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 10px; padding: .6rem .85rem;
+}
+.sites .name { font-weight: 650; min-width: 5.5em; }
+.sites .how { color: var(--ink-soft); font-size: .875rem; flex: 1; min-width: 0; }
+.tag {
+  font-size: .75rem; padding: .05rem .55rem; border-radius: 999px;
+  border: 1px solid currentColor; white-space: nowrap;
+}
+.tag.free { color: var(--green); }
+.tag.login { color: var(--amber); }
+
+h3 { font-size: .9375rem; margin: 0 0 .25rem; font-weight: 650; }
+p { margin: 0 0 .9rem; }
+p:last-child { margin-bottom: 0; }
+.panel > .block + .block { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); }
+.block p { color: var(--ink-soft); font-size: .9375rem; }
+
+.caution {
+  background: rgba(224,176,64,.09);
+  border: 1px solid rgba(224,176,64,.35);
+  border-radius: 10px; padding: .9rem 1rem;
+}
+.caution h3 { color: var(--amber); }
+.caution p { color: #e7d3ab; }
+
+.cmd, .hash code {
+  font-family: var(--mono); font-size: .8125rem; line-height: 1.65;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 8px; padding: .7rem .8rem; color: var(--ink);
+}
+.cmd { display: block; overflow-x: auto; white-space: pre; margin: 0 0 .9rem; }
+.hash { display: grid; gap: .6rem; }
+.hash code { display: block; word-break: break-all; color: var(--cyan); }
+.copy {
+  justify-self: start;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--cyan);
+  font: inherit; font-size: .8125rem; padding: .35rem .95rem;
+  border-radius: 8px; cursor: pointer;
+}
+.copy:hover { border-color: var(--cyan); }
+.copy:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.faq { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.25rem; }
+.faq p { color: var(--ink-soft); font-size: .9375rem; }
+
+footer { background: var(--ground-2); border-top: 1px solid var(--line-soft); }
+footer .wrap { padding-block: 1.8rem 2.4rem; }
+footer p { font-size: .8125rem; color: var(--ink-faint); max-width: 40rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+main .wrap{grid-template-columns:minmax(0,1fr)}.panel,.phead>div{min-width:0}@media(max-width:540px){.panel{padding:1rem}.sites .how{flex-basis:100%;order:3}}
+.sites .name{min-width:6.5em}.shot{display:block;width:100%;height:auto;border:1px solid #14477a;border-radius:12px}.cap{color:#9db6cf;font-size:.8rem;margin:.6rem 0 0}.brand img{width:54px;height:54px;flex:none}
+</style><link rel="stylesheet" href="/assets/brand.css"><script src="/assets/motion.js" defer></script><meta property="og:title" content="蓝鲸选题雷达 · BruceTools"><meta property="og:image" content="https://brucetools.com/assets/og-card.jpg"></head><body class="download-page"><a class="skip" href="#main">跳到主要内容</a>
+
+<nav class="wrap" aria-label="主导航" style="padding-block:1rem;display:flex;flex-wrap:wrap;gap:1.5rem"><a class="wordmark brand-header" href="/" aria-label="BruceTools 首页"><img src="/assets/logo-header.webp" alt="BruceTools · brucetools.com" width="337" height="84"></a><a href="#guide">使用指南</a><a href="https://github.com/chichangbang1-arch/bluewhale-radar/releases/tag/v0.5.0">发行说明 ↗</a></nav><header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <img src="/assets/radar-icon.png" alt="蓝鲸选题雷达图标" width="54" height="54">
+      <div>
+        <div class="brand-name"><b>蓝鲸选题雷达</b><span class="chip">v0.5.0</span><span class="chip">测试版</span></div>
+        <div class="sub">Windows 短视频选题工具 · 公开数据 · 本地保存</div>
+      </div>
+    </div>
+
+    <h1>每天找到正在爆的选题</h1>
+    <p class="lede">按你的关键词，找出 B站近几天播放最多的视频；盯住对标账号的爆款，再把当天的数据汇成一份选题报告。<b>Windows 桌面版，免费使用，目前是测试版。</b></p>
+
+    <div class="get">
+      <a class="btn" href="https://github.com/chichangbang1-arch/bluewhale-radar/releases/download/v0.5.0/BlueWhaleRadar_Setup_v0.5.0.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/>
+        </svg>
+        下载 Windows 版
+      </a>
+      <span class="alt"><a href="https://github.com/chichangbang1-arch/bluewhale-radar/releases">查看全部版本</a></span>
+    </div>
+
+    <ul class="meta">
+      <li><b>约 38 MB（39,893,098 字节）</b></li>
+      <li>Windows 10 / 11（64 位）</li>
+      <li>2026-11-08 更新</li>
+      <li>免费 · 不用登录平台账号</li>
+    </ul>
+  </div>
+</header>
+
+<main id="main"><div class="wrap" style="padding-top:2rem"><img class="shot" src="/assets/radar-discover.webp" alt="蓝鲸选题雷达 v0.5.0 实际界面：新热点发现，按日均播放排序的近期视频与候选对标账号" width="1600" height="1018"><p class="cap">实际软件界面 · v0.5.0 · 新热点发现</p></div>
+  <div class="wrap">
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 18.5 5.5"/></svg></span>
+        <div>
+          <h2>它能帮你做什么</h2>
+          <p>右边标签是数据来源；平台数据都来自公开接口</p>
+        </div>
+      </div>
+      <ul class="sites">
+        <li><span class="name">新热点发现</span><span class="how">按你的关键词搜 B站近几天播放最多的视频和分区排行，按日均播放排序，还会找出反复出现的候选对标账号</span><span class="tag free">B站</span></li>
+        <li><span class="name">对标账号</span><span class="how">盯住 B站 UP 主 / YouTube 频道近 N 天的视频，算爆款倍数、24 小时增长</span><span class="tag free">B站 · YouTube</span></li>
+        <li><span class="name">爆款搜索</span><span class="how">关键词搜索、综合热门、每周必看、分区排行榜，前 20% 标出来</span><span class="tag free">B站</span></li>
+        <li><span class="name">评论挖掘</span><span class="how">看热门视频下观众在问什么（只存评论内容、点赞和时间）</span><span class="tag free">B站</span></li>
+        <li><span class="name">数据监测</span><span class="how">定时记录视频的播放、点赞变化，画成趋势图</span><span class="tag free">B站</span></li>
+        <li><span class="name">我的作品</span><span class="how">导入抖音创作者中心导出的作品数据，按话题看播放和完播</span><span class="tag free">本地文件</span></li>
+        <li><span class="name">全网热榜</span><span class="how">每日采集时读抖音、百度、头条、B站公开热榜，只挑和你关键词相关的</span><span class="tag free">公开热榜</span></li>
+        <li><span class="name">选题报告</span><span class="how">一键把当天的数据汇总成一份 Markdown 报告</span><span class="tag free">本地</span></li>
+        <li><span class="name">AI 选题</span><span class="how">把当天数据交给 AI 给出可开拍的选题；用你自己的 Key，或复制提示词粘贴到任意 AI 网页</span><span class="tag login">自备 Key</span></li>
+        <li><span class="name">选题池</span><span class="how">看中的选题收进来，标记待做 / 在做 / 已发布</span><span class="tag free">本地</span></li>
+        <li><span class="name">每日自动采集</span><span class="how">交给 Windows 任务计划程序每天定点跑，不用开着软件</span><span class="tag free">本地</span></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="7.5" ry="3"/><path d="M4.5 6v12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V6"/><path d="M4.5 12c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3"/></svg></span>
+        <div>
+          <h2>数据从哪来，存在哪</h2>
+          <p>采集方式和保存位置，先说清楚</p>
+        </div>
+      </div>
+      <div class="block">
+        <h3>只读公开数据，不登录</h3>
+        <p>软件读取 B站、YouTube 和各家热榜的公开接口，不需要也不会要求你登录平台账号。每次请求间隔至少 1.5 秒，遇到平台风控就立即停止，不硬抓。平台接口有变化时，个别功能可能暂时取不到数据。</p>
+      </div>
+      <div class="block">
+        <h3>数据保存在你自己电脑上</h3>
+        <p>关键词、采集结果、报告和选题池都存在本机文件夹，位置可以在「设置」里改，卸载软件也不会删除。只有你主动使用「AI 选题」并填了 Key 时，当天的汇总数据才会发送给你选的 AI 服务。</p>
+      </div>
+      <div class="block">
+        <img class="shot" src="/assets/radar-ai.webp" alt="蓝鲸选题雷达 AI 选题页面：填写频道介绍，让 AI 出选题或复制提示词" width="1600" height="1018" loading="lazy">
+        <p class="cap">AI 选题：没有 Key 也能用「复制提示词」，粘贴到任意 AI 网页</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 4.4 3.4 8.1 8 9 4.6-.9 8-4.6 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div>
+          <h2 id="guide">安装与使用</h2>
+          <p>第一次用，照这三步来</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>三步开始使用</h3><p>1. 下载安装包并核对校验值，安装（不需要管理员权限）。<br>2. 在「新热点发现」里换成你自己赛道的关键词，点「一键发现新热点」。<br>3. 在「对标账号」加几个同行，打开「每日自动采集」，以后每天看报告就行。</p>
+        <h3>支持 Windows 电脑</h3>
+        <p>当前安装包适用于 Windows 10 / 11（64 位），不能装在手机或 Mac 上。</p>
+      </div>
+
+      <div class="block">
+        <div class="caution">
+          <h3>安装包签名与文件校验</h3>
+          <p>当前安装包未做代码签名，Windows 或安全软件可能提示风险。本页提供 SHA-256 校验值及 PowerShell 核对方法，请自行判断是否继续。</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>下完可以核对一下文件</h3>
+        <p>在下载目录里按住 Shift 右键，选「在此处打开 PowerShell 窗口」，粘贴这条回车：</p>
+        <code class="cmd">Get-FileHash .\BlueWhaleRadar_Setup_v0.5.0.exe -Algorithm SHA256</code>
+        <p>出来的那串应该和下面这串一模一样：</p>
+        <div class="hash">
+          <code id="sha">1bf2e36b151cd7dad8245c13f759ea784a2662060f4841e4821b27877cae8933</code>
+          <button class="copy" id="copy" type="button">复制校验值</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="phead">
+        <span class="picon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.8 2.8 0 0 1 5.4.9c0 1.9-2.7 2.3-2.7 4"/><path d="M12 17.5h.01"/></svg></span>
+        <div>
+          <h2>常见问题</h2>
+          <p>开始之前你可能想知道</p>
+        </div>
+      </div>
+      <ul class="faq">
+        <li>
+          <h3>要钱吗？要登录我的 B站 / 抖音吗？</h3>
+          <p>软件免费使用，不需要登录任何平台账号。只有「AI 选题」想一键出结果时，需要你自己去 DeepSeek、通义千问、Kimi 或 OpenAI 申请 Key，费用按该服务的价格；不想用 Key，就点「复制提示词」粘贴到 AI 网页。</p>
+        </li>
+        <li>
+          <h3>每日自动采集，要一直开着软件吗？</h3>
+          <p>不用。它交给 Windows 任务计划程序定时运行，软件关着也会跑。到点时电脑关机或睡眠，会在下次开机后补跑；下次打开软件，顶部会提示这次采集的结果。</p>
+        </li>
+        <li>
+          <h3>某个关键词今天搜出来是 0 条？</h3>
+          <p>可能是平台临时限流或接口变化，软件遇到风控会主动停下，不会反复请求。通常过一段时间或第二天就恢复；如果一直是 0，请到 GitHub 发行页反馈。</p>
+        </li>
+        <li>
+          <h3>怎么更新到新版本？</h3>
+          <p>软件每次打开会检查一次新版本，有更新时弹出提示，点「立即更新」即可。也可以随时回到本页或 GitHub 发行页下载最新安装包。</p>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="wordmark footer-brand" href="/" aria-label="BruceTools 首页"><span class="mark"><img src="/assets/logo-mark.png" alt="BruceTools BT 标志" width="36" height="36"></span>Bruce<span class="soft">Tools</span></a>
+    <p>项目主页与历史版本：<a href="https://github.com/chichangbang1-arch/bluewhale-radar/releases">GitHub</a> · 同系列工具：<a href="/bluewhale/">蓝鲸视频下载器</a></p>
+    <p style="margin-top:.6rem">选题雷达只读取平台公开数据，用于选题参考。请遵守各平台规则，不要用来搬运或冒用他人作品。</p>
+  </div>
+</footer>
+
+<script src="/assets/copy.js" defer></script>
+</body></html>
