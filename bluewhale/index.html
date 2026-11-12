@@ -64,6 +64,7 @@ a { color: var(--cyan); }
 
 .brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 2.2rem; }
 .brand svg { width: 54px; height: auto; flex: none; }
+.brand img { width: 54px; height: 54px; flex: none; }
 .brand-name { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
 .brand-name b { font-size: 1.375rem; font-weight: 700; letter-spacing: .01em; }
 .chip {
@@ -185,15 +186,7 @@ main .wrap{grid-template-columns:minmax(0,1fr)}.panel,.phead>div{min-width:0}@me
 <nav class="wrap" aria-label="主导航" style="padding-block:1rem;display:flex;flex-wrap:wrap;gap:1.5rem"><a class="wordmark brand-header" href="/" aria-label="BruceTools 首页"><img src="/assets/logo-header.webp" alt="BruceTools · brucetools.com" width="337" height="84"></a><a href="#guide">使用指南</a><a href="https://github.com/chichangbang1-arch/bluewhale-downloader/releases/tag/v3.3.13">发行说明 ↗</a></nav><header class="hero">
   <div class="wrap">
     <div class="brand">
-      <svg viewBox="0 0 68 40" role="img" aria-label="蓝鲸">
-        <defs>
-          <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#5fd2ff"/><stop offset="1" stop-color="#0a7ff0"/>
-          </linearGradient>
-        </defs>
-        <path d="M6 22C6 13 17 6.5 29.5 6.5c10.5 0 17.5 4.8 20.8 11L61.5 10c1.2 5.8-.3 9.4-3.2 12 2.9 2.6 4.4 6.2 3.2 12l-11.2-7.5c-3.3 6.2-10.3 11-20.8 11C17 37.5 6 31 6 22Z" fill="url(#wg)"/>
-        <circle cx="17.5" cy="19" r="1.9" fill="#04121f"/>
-      </svg>
+      <img src="/assets/whale.png" alt="蓝鲸视频下载器图标" width="54" height="54">
       <div>
         <div class="brand-name"><b>蓝鲸视频下载器</b><span class="chip">v3.3.13</span></div>
         <div class="sub">Windows 视频下载工具 · 批量任务 · 本地保存</div>
