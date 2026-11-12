@@ -1,0 +1,40 @@
+/* Shared BruceTools brand and interaction layer. No remote resources. */
+:root{--bg:#07131f;--cyan:#62cfff;--fx-line:#28495d}
+body{background-color:var(--bg);background-image:linear-gradient(#62cfff04 1px,transparent 1px),linear-gradient(90deg,#62cfff04 1px,transparent 1px);background-size:48px 48px}
+.wordmark{display:inline-flex;align-items:center;font-weight:750;text-decoration:none;letter-spacing:-.6px;color:#eef6fc;font-size:23px;white-space:nowrap}
+.wordmark .soft{color:#9bafbf}.wordmark .mark{display:inline-flex;flex:none;width:36px;height:36px;border:0;background:none;padding:0;margin-right:12px;line-height:1}.mark img{display:block;width:36px;height:36px}
+nav a,.nav a,footer a{border-radius:5px}nav a:not(.wordmark):hover,footer a:hover{color:var(--cyan);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+:is(.button,.btn,.copy,.nav-download):hover{box-shadow:0 0 0 1px #62cfff55,0 7px 25px #62cfff24;border-color:var(--cyan)}
+:is(.product,.hero-visual,.closing,.download-page .panel){position:relative;isolation:isolate}
+:is(.product,.hero-visual,.closing,.download-page .panel):hover{border-color:#62cfff8c;box-shadow:0 0 0 1px #62cfff18,0 16px 40px #0003}
+.faq details:hover{border-color:#62cfff70;background:#62cfff06}.faq summary:hover{color:var(--cyan)}.faq summary span{display:inline-block}
+.download-page{--ground:#07131f;--ground-2:#06101a;--cyan:#62cfff}.download-page>nav{align-items:center;border-bottom:1px solid #213647;gap:1.5rem}.download-page>nav .wordmark{margin-right:auto}.download-page .hero{border-bottom-color:#294658}.download-page .panel .picon{border-color:#62cfff55}
+.skip{position:absolute;top:-100px;left:16px;padding:10px 16px;z-index:50;background:var(--cyan);color:#07131f}.skip:focus{top:10px}a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+nav a,.nav a,footer a,.button,.btn,.copy,.nav-download,.faq details,.faq summary,.faq summary span{transition:color .18s,border-color .18s,background-color .18s,box-shadow .18s,transform .18s}
+.wordmark:hover .mark{filter:drop-shadow(0 0 7px #62cfff66)}nav a:not(.wordmark):hover{transform:translateY(-1px)}.faq summary:hover span{transform:rotate(90deg)}.faq details[open] summary:hover span{transform:rotate(45deg)}
+.fx-card{transform-style:preserve-3d;transition:transform .25s ease,border-color .2s,box-shadow .2s}.fx-card.fx-active{transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-3px)}
+.fx-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;background:radial-gradient(360px circle at var(--mx,50%) var(--my,50%),#62cfff15,transparent 75%);opacity:0;transition:opacity .2s}.fx-card.fx-active::after{opacity:1}
+}
+@media(max-width:680px){.download-page>nav .wordmark{font-size:20px}.download-page>nav{column-gap:18px!important;row-gap:12px!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.fx-card,.fx-card.fx-active,.hero-visual,.button,.btn,nav a,.faq summary span{transform:none!important}.fx-card::after{display:none!important}.wordmark .mark{filter:none!important}}
+
+/* Static depth: supplied BT artwork, local CSS only. */
+body{background-image:radial-gradient(ellipse 720px 520px at 14% 280px,#007dd333,transparent 72%),radial-gradient(ellipse 620px 480px at 88% 380px,#079cfa24,transparent 72%),linear-gradient(#62cfff0b 1px,transparent 1px),linear-gradient(90deg,#62cfff0b 1px,transparent 1px);background-size:auto,auto,48px 48px,48px 48px}
+body:not(.download-page) .hero{position:relative;isolation:isolate}
+body:not(.download-page) .hero::before{content:"";position:absolute;z-index:-1;pointer-events:none;left:-80px;top:50px;width:min(650px,85vw);height:450px;background:radial-gradient(ellipse,#0f96ff26,transparent 68%);filter:blur(12px);opacity:.55}
+.accent{color:#62cfff;background:linear-gradient(110deg,#b6efff,#62cfff 45%,#329df4);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 28px #39b4ff25}
+.product,.hero-visual,.closing,.download-page .panel{border:1px solid transparent;background:linear-gradient(125deg,#102c40,#0a1b29) padding-box,linear-gradient(125deg,#62cfff9c,#62cfff1c 38%,#176abd66 72%,#62cfff66) border-box;box-shadow:0 0 0 1px #52b9ff0a,0 0 26px #188bdb12,0 16px 42px #0002}
+.hero-visual{box-shadow:0 0 0 1px #62cfff18,0 0 45px #158edc26,0 26px 70px #0005}
+.download-page .hero{background:radial-gradient(ellipse at 12% 20%,#168bd436,transparent 66%),radial-gradient(ellipse at 90% 65%,#1366bd30,transparent 65%),linear-gradient(180deg,#0a2036,#07131f)}
+.nav,.workflow,footer.wrap,.download-page>nav,.faq details{border-image:linear-gradient(90deg,#62cfff05,#62cfff6b 50%,#62cfff05) 1}
+.brand-signoff{display:flex;align-items:center;justify-content:center;padding:18px 0 70px;position:relative}
+.brand-signoff::before{content:"";position:absolute;pointer-events:none;inset:0;background:radial-gradient(ellipse at center,#0c73c51a,transparent 65%)}
+.brand-signoff img{position:relative;display:block;width:clamp(260px,38vw,440px);max-width:100%;height:auto}
+.footer-brand .mark{margin-right:10px}.download-page footer .footer-brand{margin-bottom:20px}
+@media(prefers-reduced-motion:no-preference){body:not(.download-page) .hero::before{animation:ambient-breathe 14s ease-in-out infinite alternate}}
+@keyframes ambient-breathe{from{opacity:.35;transform:scale(.98)}to{opacity:.7;transform:scale(1.04)}}
+@media(max-width:680px){.brand-signoff{padding-bottom:45px}}
+@media(prefers-reduced-motion:reduce){body:not(.download-page) .hero::before{animation:none!important;transform:none!important}}
+
+.product-icon img{height:auto}
