@@ -1,11 +1,11 @@
 {
-  "version": "3.3.13",
+  "version": "3.3.14",
   "min_supported_version": "3.2.0",
-  "release_date": "2026-11-10",
+  "release_date": "2026-11-13",
   "channel": "stable",
-  "notes_zh": "平台授权卡片的状态和提示改成看得懂的说法，文字不再被截断。",
-  "installer_url": "https://github.com/chichangbang1-arch/bluewhale-downloader/releases/download/v3.3.13/BlueWhaleDownloader_Setup_v3.3.13_preview_20261110d.exe",
-  "installer_sha256": "46228a873f484c178e127162665d4acf4d9bc7c997a5ae1b962646d404662189",
-  "installer_size": 206207696,
-  "signature": "jZ3c9lbD7z20KpsFP0K0nL+9AL1LSwacobKZyTsXDfEotKEjQ/KOTHUF6zfJgO3RxqayXup6wcJ9t2d/girmBg=="
+  "notes_zh": "更新更稳：下载更新中途断网可以接着下；GitHub 连不上时会自动换备用地址检查更新。暂停和退出更及时，不再残留后台进程。",
+  "installer_url": "https://github.com/chichangbang1-arch/bluewhale-downloader/releases/download/v3.3.14/BlueWhaleDownloader_Setup_v3.3.14_preview_20261113n.exe",
+  "installer_sha256": "bfd8c2101bb9914f1a1be9aa6efffc72de329db49f3578fe7227b4acc76048be",
+  "installer_size": 206230613,
+  "signature": "pXbLr1eS9ovPL6b+F6snwWMl4PNhSrARPu5Rhmiqi/MM10GRDR7yE57rRz6W6ficY+d6dXgvJuTAh5HBAjM0BQ=="
 }
