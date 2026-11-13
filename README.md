@@ -24,3 +24,8 @@ brucetools.com 的静态站点源码。
 
 `bluewhale/latest.json` 是蓝鲸视频下载器更新清单的备用地址（GitHub 连不上时客户端会来这里取）。
 每次发布新版，把发布包里的 `latest.json` 原样覆盖到这里。清单带签名，镜像无法伪造更新。
+
+## 安装包下载（R2）
+
+蓝鲸下载器的“下载 Windows 版”按钮走 `https://download.brucetools.com/<安装包文件名>`（Cloudflare R2 存储桶 `brucetools-downloads`），
+GitHub 发行页作为备用下载。每次发新版：安装包上传到 GitHub Release，同时上传到这个存储桶，再改下载页链接。
