@@ -4,8 +4,8 @@
   "release_date": "2026-11-13",
   "channel": "stable",
   "notes_zh": "更新更稳：下载更新中途断网可以接着下；GitHub 连不上时会自动换备用地址检查更新。暂停和退出更及时，不再残留后台进程。",
-  "installer_url": "https://github.com/chichangbang1-arch/bluewhale-downloader/releases/download/v3.3.14/BlueWhaleDownloader_Setup_v3.3.14_preview_20261113n.exe",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.14_preview_20261113n.exe",
   "installer_sha256": "bfd8c2101bb9914f1a1be9aa6efffc72de329db49f3578fe7227b4acc76048be",
   "installer_size": 206230613,
-  "signature": "pXbLr1eS9ovPL6b+F6snwWMl4PNhSrARPu5Rhmiqi/MM10GRDR7yE57rRz6W6ficY+d6dXgvJuTAh5HBAjM0BQ=="
+  "signature": "AtE8Nwh7VSA0ChLhgi4QF5C1qMnLYT994oQGuF8Ta7glUcMuGCqz2omoiJvdaDf4k3pvt+W3W0N5QGhpah/FDg=="
 }
