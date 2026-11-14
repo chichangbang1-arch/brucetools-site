@@ -1,11 +1,11 @@
 {
-  "version": "3.3.16",
+  "version": "3.3.17",
   "min_supported_version": "3.2.0",
   "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "修复：TikTok 等网站偶尔解析失败——现在会自动再试一次；还失败时弹窗会写清楚原因，不再显示看不懂的提示。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.16_preview_20261114.exe",
-  "installer_sha256": "b5fb47fbebd43413717e499ad8ed68c130511f574b082edbd5174fea9006fe2c",
-  "installer_size": 200946203,
-  "signature": "YJvehqUZ+NwKJjry0hiC0YfFdO/ngMcsUWwj22RM5rYiKKY4eR66uiVHnQ18XDeSWLXl5ciT/t7sUxWMCfHzCg=="
+  "notes_zh": "修复：TikTok 视频解析失败（提示 Unexpected response）。TikTok 最近开始拦截部分访问方式，现已调整。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.17_preview_20261114.exe",
+  "installer_sha256": "e90d76688d9fc24ce93887276fe80052a730471c4491ebb2b96c83192b07d135",
+  "installer_size": 200936533,
+  "signature": "BP2lJvpxr3UItyWLBb6nSuCfJbhEK1RJRpF7XMhys0c0Tuvhkxnm5uPoQnW5JvvAy39/D9PKmRkGGI6tz9bYCw=="
 }
