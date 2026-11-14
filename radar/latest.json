@@ -1,11 +1,11 @@
 {
-  "version": "0.6.2",
+  "version": "0.6.3",
   "min_supported_version": "0.2.0",
   "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "AI 选题修复：选 Claude 时“让 AI 出选题”可能提示“AI 没有返回内容”——Claude 新模型会先思考再回答，思考也占用字数额度，原来的额度不够用。现在给足额度；万一仍然没有正文，会说清楚是额度用完、服务拦截还是服务出错，而不是笼统地报错；写到上限停下时保留已写内容并注明。其他服务商不受影响。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.2.exe",
-  "installer_sha256": "ba8efb335659888e94780c89cba109f923e9ad2ecf361656fe7e2ab2b9f9d879",
-  "installer_size": 39947451,
-  "signature": "nqObsdfvS18Ss70C9svFiXWLEE1yM07eet64wpfeDqIUOTyKB/X+zJ2glouXWdHaQIxwdisjeNOVLALluGbMCQ=="
+  "notes_zh": "AI 选题连接修复：装了杀毒软件（如 Avast、360）并开着“HTTPS 扫描”的电脑上，连接 Claude 等 AI 服务可能报“证书校验失败 / SSLError”。现在同时信任 Windows 系统证书库（仍然校验证书），这类电脑也能正常连上；真连不上时会给出明确提示。另含 0.6.2 的修复：Claude 出选题给足字数额度，没有正文时说清原因。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.3.exe",
+  "installer_sha256": "12539065e9275bd74e4036480894210fa1ded498129c0390fef795698c21658d",
+  "installer_size": 39930255,
+  "signature": "E0uCfADHCAjF2LQR01AjqQ4YmZXphh43Hfb1OW/IQNpzCm42erPVeO4wAp2neS46OrcSHEpHxnsUPJKHKJ3fAQ=="
 }
