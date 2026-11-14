@@ -1,11 +1,11 @@
 {
-  "version": "3.3.15",
+  "version": "3.3.16",
   "min_supported_version": "3.2.0",
-  "release_date": "2026-11-13",
+  "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "安装包下载更稳：国内下载地址和 GitHub 互为备用，一个连不上会自动换另一个。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.15_preview_20261113.exe",
-  "installer_sha256": "6b1edc0cddb699ea829bee69e20c966b68fe9ef5cb781ccdae0b26c46d0b7252",
-  "installer_size": 200915966,
-  "signature": "vIz5LH9LsF5G5umMvnCqyw1VK7tSqKD98+qqV6Te6UmJNNnoLO0xLYbILJsJ/8JeGXy9rZXAcozxlNatssKpDQ=="
+  "notes_zh": "修复：TikTok 等网站偶尔解析失败——现在会自动再试一次；还失败时弹窗会写清楚原因，不再显示看不懂的提示。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.16_preview_20261114.exe",
+  "installer_sha256": "b5fb47fbebd43413717e499ad8ed68c130511f574b082edbd5174fea9006fe2c",
+  "installer_size": 200946203,
+  "signature": "YJvehqUZ+NwKJjry0hiC0YfFdO/ngMcsUWwj22RM5rYiKKY4eR66uiVHnQ18XDeSWLXl5ciT/t7sUxWMCfHzCg=="
 }
