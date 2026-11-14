@@ -1,11 +1,11 @@
 {
-  "version": "0.6.1",
+  "version": "0.6.2",
   "min_supported_version": "0.2.0",
   "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "AI 选题支持 Claude：在“设置 → AI 服务”里选“Claude”，填 Anthropic 后台（platform.claude.com）申请的 API Key 即可，默认模型 claude-sonnet-5-5，可以改成别的 Claude 模型。走 Anthropic 官方的 OpenAI 兼容接口；已针对 Claude 新模型做了适配（不发送它不接受的温度参数），余额不足、服务繁忙时会给出中文提示。其他服务商不受影响。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.1.exe",
-  "installer_sha256": "8c6cced0ce882af269496b5f7cb5b77973ec1ffd8a74ac20a6a7e56c9596742b",
-  "installer_size": 39932188,
-  "signature": "W+I/td3onA+7eqi2f4ZlJRJpfoPtnAr+LuKMQHtYjdom5nq67miYz1lxStArZatd/yanlUn22Do/0+fIKmo2DQ=="
+  "notes_zh": "AI 选题修复：选 Claude 时“让 AI 出选题”可能提示“AI 没有返回内容”——Claude 新模型会先思考再回答，思考也占用字数额度，原来的额度不够用。现在给足额度；万一仍然没有正文，会说清楚是额度用完、服务拦截还是服务出错，而不是笼统地报错；写到上限停下时保留已写内容并注明。其他服务商不受影响。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.2.exe",
+  "installer_sha256": "ba8efb335659888e94780c89cba109f923e9ad2ecf361656fe7e2ab2b9f9d879",
+  "installer_size": 39947451,
+  "signature": "nqObsdfvS18Ss70C9svFiXWLEE1yM07eet64wpfeDqIUOTyKB/X+zJ2glouXWdHaQIxwdisjeNOVLALluGbMCQ=="
 }
