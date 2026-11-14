@@ -29,3 +29,13 @@ brucetools.com 的静态站点源码。
 
 蓝鲸下载器的“下载 Windows 版”按钮走 `https://download.brucetools.com/<安装包文件名>`（Cloudflare R2 存储桶 `brucetools-downloads`），
 GitHub 发行页作为备用下载。每次发新版：安装包上传到 GitHub Release，同时上传到这个存储桶，再改下载页链接。
+
+## 发版检查清单（蓝鲸 / 雷达每次发新版都要做）
+
+1. 覆盖对应的 `latest.json`（`bluewhale/latest.json` 或 `radar/latest.json`）。
+2. 改下载页（`bluewhale/index.html` 或 `radar/index.html`）里的版本号、安装包链接、SHA-256、大小。
+3. **同步首页兜底数字**：在仓库根目录运行 `python3 scripts/sync_home.py`，然后提交 `index.html`。
+   首页在浏览器里会自己读 `latest.json`，访客看到的总是新版本；但 HTML 里写死的数字
+   （无脚本、搜索引擎爬虫、请求失败时显示）不会自己变，漏了这步就会和下载页对不上。
+   只想检查不想改：`python3 scripts/sync_home.py --check`，有过期数字时退出码为 1。
+4. 推送 main 前再跑一次 `--check`，确认输出“已是最新”。
