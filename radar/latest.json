@@ -1,11 +1,11 @@
 {
-  "version": "0.6.0",
+  "version": "0.6.1",
   "min_supported_version": "0.2.0",
   "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "新增「今日选题卡」：不只列出热门，而是告诉你为什么值得做、建议怎么拍。雷达把当天的热点按“讲的是什么”自动归组（产品 / 模型名、话题别名、反复出现的人名新梗），每组一张卡：为什么值得做（引用真实播放、24 小时增长、多少个 UP 主在做、收藏率、评论里有多少人在求教程）、建议怎么拍、开头一句、赶不赶时效（24–48 小时内 / 本周内 / 3–7 天都有效）、注意事项；你选题池里已经做过的题会标出来。不需要 AI Key。选题报告开头就是选题卡，报告页一键「选题卡加入选题池」。卡片也另存为 数据\\topic_cards.csv，Excel 可直接打开。另外，自动更新更稳：GitHub 连不上时会自动改从 brucetools.com 检查更新；安装包优先从国内地址下载，下不动会自动换 GitHub，两边都会校验文件，不会装错。更新失败时“打开下载页”改为国内能打开的 brucetools.com。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.0.exe",
-  "installer_sha256": "a1480a523566282af7a9ea54d498cd4a1537587cf8a6d38b8889bec5e5e32842",
-  "installer_size": 39936886,
-  "signature": "HYFIJL3jjy+a7TzosTBRLu0pnX2PzXBuRiyxPP7CPr+CiHZk1rQFXc81zIMolxUtYGitIPKBpsXdwAP9ij2NAg=="
+  "notes_zh": "AI 选题支持 Claude：在“设置 → AI 服务”里选“Claude”，填 Anthropic 后台（platform.claude.com）申请的 API Key 即可，默认模型 claude-sonnet-5-5，可以改成别的 Claude 模型。走 Anthropic 官方的 OpenAI 兼容接口；已针对 Claude 新模型做了适配（不发送它不接受的温度参数），余额不足、服务繁忙时会给出中文提示。其他服务商不受影响。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.1.exe",
+  "installer_sha256": "8c6cced0ce882af269496b5f7cb5b77973ec1ffd8a74ac20a6a7e56c9596742b",
+  "installer_size": 39932188,
+  "signature": "W+I/td3onA+7eqi2f4ZlJRJpfoPtnAr+LuKMQHtYjdom5nq67miYz1lxStArZatd/yanlUn22Do/0+fIKmo2DQ=="
 }
