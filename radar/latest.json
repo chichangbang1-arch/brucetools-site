@@ -1,11 +1,11 @@
 {
-  "version": "0.6.3",
+  "version": "0.6.4",
   "min_supported_version": "0.2.0",
   "release_date": "2026-11-14",
   "channel": "stable",
-  "notes_zh": "AI 选题连接修复：装了杀毒软件（如 Avast、360）并开着“HTTPS 扫描”的电脑上，连接 Claude 等 AI 服务可能报“证书校验失败 / SSLError”。现在同时信任 Windows 系统证书库（仍然校验证书），这类电脑也能正常连上；真连不上时会给出明确提示。另含 0.6.2 的修复：Claude 出选题给足字数额度，没有正文时说清原因。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.3.exe",
-  "installer_sha256": "12539065e9275bd74e4036480894210fa1ded498129c0390fef795698c21658d",
-  "installer_size": 39930255,
-  "signature": "E0uCfADHCAjF2LQR01AjqQ4YmZXphh43Hfb1OW/IQNpzCm42erPVeO4wAp2neS46OrcSHEpHxnsUPJKHKJ3fAQ=="
+  "notes_zh": "采集连接修复：装了杀毒软件（如 Avast、360）并开着“HTTPS 扫描”的电脑上，采集 B站、YouTube、热榜可能报“SSLError / 证书校验失败”。0.6.3 只修了 AI 选题，这一版把所有联网采集都改成同时信任 Windows 系统证书库（仍然校验证书）。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.4.exe",
+  "installer_sha256": "df9022a234a63d934d9611e8d2091d8b6fe333c0c163cf00410d5f351b12b2bb",
+  "installer_size": 39929012,
+  "signature": "q/OOCHu7ucERbbXrIqyM8rN9zUyqFYklzfkjyi4nibProM5H+deEUbKYeqeihmIDyarWqHxlaz1KDd/w495QAA=="
 }
