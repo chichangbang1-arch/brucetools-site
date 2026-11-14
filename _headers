@@ -3,7 +3,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.51.la; style-src 'self' 'unsafe-inline'; script-src 'self' https://sdk.51.la; connect-src 'self' https://*.51.la; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
 
 /bluewhale/latest.json
   Cache-Control: no-cache
