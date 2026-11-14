@@ -8,3 +8,7 @@
 /bluewhale/latest.json
   Cache-Control: no-cache
   Access-Control-Allow-Origin: *
+
+/radar/latest.json
+  Cache-Control: no-cache
+  Access-Control-Allow-Origin: *
