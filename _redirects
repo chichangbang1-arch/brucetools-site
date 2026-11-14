@@ -1,0 +1,13 @@
+# 各推广平台的专属短链接：打开后 302 跳到蓝鲸下载页，并带上来源参数，
+# 51.LA 的“渠道追踪 / 渠道分析”按 utm_source 区分平台。
+# 短链接适合在视频里口播、在简介里手打（抖音、视频号简介里的链接通常点不了）。
+# 新增平台：照抄一行，改短路径和 utm_source；用 302，以后改落地页不受缓存影响。
+
+/sph     /bluewhale/?utm_source=shipinhao&utm_medium=video&utm_campaign=bruceai   302
+/sph/    /bluewhale/?utm_source=shipinhao&utm_medium=video&utm_campaign=bruceai   302
+/bili    /bluewhale/?utm_source=bilibili&utm_medium=video&utm_campaign=bruceai    302
+/bili/   /bluewhale/?utm_source=bilibili&utm_medium=video&utm_campaign=bruceai    302
+/dy      /bluewhale/?utm_source=douyin&utm_medium=video&utm_campaign=bruceai      302
+/dy/     /bluewhale/?utm_source=douyin&utm_medium=video&utm_campaign=bruceai      302
+/yt      /bluewhale/?utm_source=youtube&utm_medium=video&utm_campaign=bruceai     302
+/yt/     /bluewhale/?utm_source=youtube&utm_medium=video&utm_campaign=bruceai     302
