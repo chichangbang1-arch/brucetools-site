@@ -1,11 +1,11 @@
 {
-  "version": "3.3.18",
+  "version": "3.3.19",
   "min_supported_version": "3.2.0",
   "release_date": "2026-11-15",
   "channel": "stable",
-  "notes_zh": "新增：可以配合蓝鲸选题雷达使用——在雷达的‘爆款拆解’里直接贴抖音、视频号、小红书、TikTok、YouTube、X 的链接，雷达会借用下载器取视频并拆解（登录状态只留在下载器里）。下载器本身的用法不变。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.18_preview_20261115.exe",
-  "installer_sha256": "80f60fafcc6f6008c22e1dcb60117ac0433d9464b475d83f22dc0d6f118d3776",
-  "installer_size": 200952096,
-  "signature": "X4U6mhX3l2FiNpaEvFIKFaADAgSf4jyTt6jv6/8gcBZ1hbOaQq24XSeEcLPb6d8aabi1SleDfz1/EZw+OqHLBw=="
+  "notes_zh": "新增：支持小红书国际版 rednote.com 的链接。修复：在海外下载 xiaohongshu.com 视频笔记时提示 No video formats found 的问题。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.19_preview_20261115.exe",
+  "installer_sha256": "67d421d09c2b6a10e619351114dca533a87537b3f6fa49f1c2ebc6fbc4b74058",
+  "installer_size": 200948021,
+  "signature": "aRTNCbAr4pM2xNZWrNr2EKopmoL27TCn4xUB95Z4vmssJL0jJpreeCLg3Rh/BiYJcUzAzCMNyMqBBrMmfF+lCQ=="
 }
