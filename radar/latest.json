@@ -1,11 +1,11 @@
 {
-  "version": "0.7.0",
+  "version": "0.8.0",
   "min_supported_version": "0.2.0",
   "release_date": "2026-11-15",
   "channel": "stable",
-  "notes_zh": "新增两个入口，不再只有 B站：① “全网热榜”页——抖音、百度、今日头条、B站的热搜榜放在一页看（不用登录），和你的关键词相关的排在最前、标金色，双击直接去搜，右键加入选题池。② “爆款搜索”支持 YouTube——按关键词找近期播放最高的视频，或看各地区热门榜（走 YouTube 官方接口，需要在“设置”里填自己的免费 API Key；关键词搜索每次消耗 100 配额，每天约可搜 100 次）。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.7.0.exe",
-  "installer_sha256": "d381ab3c507eaa1f5f42e15a96c9911f614c7e17231b0472e90c87eccc230426",
-  "installer_size": 39951365,
-  "signature": "KOwcwrVWkgQR4Mk8696y0xpFeK4iL8GxRyeC6qrPMRkl4kR3Y2sON5NokadF9g55ipfKiBFHSTmsw4V/VCtZBA=="
+  "notes_zh": "新增“爆款拆解 · 音轨版”（免费）：把一条爆款视频的声音在你自己电脑上转成完整文字稿（免费、离线、不上传），再让 AI 拆出开头钩子、结构节奏、情绪点、可复用模板和 3 个给你频道的改编选题，一键加入选题池。所有平台都能拆：B站直接贴链接；抖音 / TikTok / YouTube / 小红书等，先用蓝鲸视频下载器下载，再点“拆本地视频”选文件。第一次用时需下载一个语音识别组件（约 556 MB，只下一次，存在数据文件夹，不占 C 盘）。在“爆款搜索 / 新热点发现”里右键 B站视频也能直接拆解。“画面拆解”正在开发中。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.8.0.exe",
+  "installer_sha256": "459531ef70c555c6fe007fe70bd2242c4dcb0e3ab56ea34c0cca2984c1918c49",
+  "installer_size": 39960166,
+  "signature": "we8uFJR76QE4lnPHG7EOxe0Nj0DuqZZ2GFGHe+sxROEPqYO1fVNcpP9TVer8RW6b2C8esW0UQLThH5igXWrVAw=="
 }
