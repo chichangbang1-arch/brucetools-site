@@ -1,11 +1,11 @@
 {
-  "version": "0.6.4",
+  "version": "0.7.0",
   "min_supported_version": "0.2.0",
-  "release_date": "2026-11-14",
+  "release_date": "2026-11-15",
   "channel": "stable",
-  "notes_zh": "采集连接修复：装了杀毒软件（如 Avast、360）并开着“HTTPS 扫描”的电脑上，采集 B站、YouTube、热榜可能报“SSLError / 证书校验失败”。0.6.3 只修了 AI 选题，这一版把所有联网采集都改成同时信任 Windows 系统证书库（仍然校验证书）。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.6.4.exe",
-  "installer_sha256": "df9022a234a63d934d9611e8d2091d8b6fe333c0c163cf00410d5f351b12b2bb",
-  "installer_size": 39929012,
-  "signature": "q/OOCHu7ucERbbXrIqyM8rN9zUyqFYklzfkjyi4nibProM5H+deEUbKYeqeihmIDyarWqHxlaz1KDd/w495QAA=="
+  "notes_zh": "新增两个入口，不再只有 B站：① “全网热榜”页——抖音、百度、今日头条、B站的热搜榜放在一页看（不用登录），和你的关键词相关的排在最前、标金色，双击直接去搜，右键加入选题池。② “爆款搜索”支持 YouTube——按关键词找近期播放最高的视频，或看各地区热门榜（走 YouTube 官方接口，需要在“设置”里填自己的免费 API Key；关键词搜索每次消耗 100 配额，每天约可搜 100 次）。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.7.0.exe",
+  "installer_sha256": "d381ab3c507eaa1f5f42e15a96c9911f614c7e17231b0472e90c87eccc230426",
+  "installer_size": 39951365,
+  "signature": "KOwcwrVWkgQR4Mk8696y0xpFeK4iL8GxRyeC6qrPMRkl4kR3Y2sON5NokadF9g55ipfKiBFHSTmsw4V/VCtZBA=="
 }
