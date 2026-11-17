@@ -1,11 +1,11 @@
 {
-  "version": "3.3.20",
+  "version": "3.3.21",
   "min_supported_version": "3.2.0",
-  "release_date": "2026-11-15",
+  "release_date": "2026-11-16",
   "channel": "stable",
-  "notes_zh": "新增：下载完自动出文字稿——勾选后，每个下载好的视频会在同一文件夹生成带时间戳的文字稿（.txt）和字幕（.srt），在你电脑上识别，免费、不上传。第一次使用需下载约 556 MB 的语音识别组件；装了蓝鲸选题雷达的电脑可直接共用。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.20_preview_20261115.exe",
-  "installer_sha256": "d918dbaf0bd9c354bb121f699761e98d723ff2f2683adb1b39a5fd3eb0bbb8e9",
-  "installer_size": 200966927,
-  "signature": "jPlxtW6tDpIJbalS1KqOXlOpzTwh1hjJ30MW0dPzwBVBLuUCc0vQOmmhqPzICTCoVi8LCEPCt8+UMnyQyDwADA=="
+  "notes_zh": "修复：视频号等链接在画质不是‘最佳’时提示‘只支持最佳 MP4 格式’而无法下载的问题——现在会自动下载原画；选了 MP3/M4A 时会给出清楚提示。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.21_preview_20261116.exe",
+  "installer_sha256": "ddf3feb837e4a9a6e67599724dfc948d494b0fad315435143c3191888c6b2db8",
+  "installer_size": 200954676,
+  "signature": "AJ3GLS55xBZHaskvpxHEh3OrAXm2HgU5uxjI/CuvHP7xBZurmhZa6oe47ALOOIamo8ucdBF9JuPHuocRbipcBA=="
 }
