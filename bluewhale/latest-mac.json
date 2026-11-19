@@ -1,0 +1,11 @@
+{
+  "version": "3.3.22",
+  "min_supported_version": "3.3.21",
+  "release_date": "2026-11-19",
+  "channel": "stable",
+  "notes_zh": "Mac 版更新。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_mac_v3.3.22_x86_64.dmg",
+  "installer_sha256": "06e1c43e83fdf6e60901b98a0daaaed9d1327df86dce11f5690c6fb4bb99423a",
+  "installer_size": 323026822,
+  "signature": "M+CGzYYrhMWK37SBIY21w1PgGnyDswJpN2Z+w5Lv5Vc02fL/t56lgAX7reG32koU/q//7pXSTRZtxYJVN7jqCA=="
+}
