@@ -1,0 +1,195 @@
+/* Layout: the app's own deep-sea shell — dark ground, cyan ribbon, bordered panels. */
+:root {
+  --ground: #061625;
+  --ground-2: #04101c;
+  --panel: #0d2740;
+  --panel-2: #0a1f36;
+  --line: #14477a;
+  --line-soft: #0f3a63;
+  --ink: #e8f3fd;
+  --ink-soft: #9db6cf;
+  --ink-faint: #6f8ba6;
+  --cyan: #00b4fe;
+  --cyan-deep: #0a7ff0;
+  --green: #28cc88;
+  --amber: #e0b040;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --han: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+         "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--han);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--cyan); }
+
+/* ---- hero with the app's light ribbon ---- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 88% -20%, rgba(0,180,254,.30), transparent 62%),
+    radial-gradient(70% 60% at 98% 10%, rgba(120,220,255,.16), transparent 70%),
+    linear-gradient(180deg, #0a2036, var(--ground));
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero::after {
+  content: "";
+  position: absolute; inset: auto -10% 32% 42%;
+  height: 170px;
+  background:
+    radial-gradient(60% 100% at 30% 50%, rgba(0,180,254,.55), transparent 70%),
+    radial-gradient(45% 100% at 70% 46%, rgba(150,230,255,.40), transparent 72%);
+  filter: blur(26px);
+  transform: rotate(-11deg);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; z-index: 1; padding-block: 2.6rem 2.9rem; }
+
+.brand { display: flex; align-items: center; gap: .85rem; margin-bottom: 2.2rem; }
+.brand svg { width: 54px; height: auto; flex: none; }
+.brand img { width: 54px; height: 54px; flex: none; }
+.brand-name { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.brand-name b { font-size: 1.375rem; font-weight: 700; letter-spacing: .01em; }
+.chip {
+  font-family: var(--mono); font-size: .75rem; font-weight: 600;
+  color: var(--cyan); background: rgba(0,180,254,.12);
+  border: 1px solid rgba(0,180,254,.4); border-radius: 999px;
+  padding: .08rem .6rem; letter-spacing: .02em;
+}
+.brand .sub { color: var(--ink-faint); font-size: .8125rem; margin-top: .1rem; }
+
+h1 {
+  font-size: clamp(1.9rem, 6.2vw, 2.75rem);
+  line-height: 1.22; margin: 0 0 .8rem;
+  letter-spacing: -.01em; text-wrap: balance;
+}
+.lede { color: var(--ink-soft); margin: 0 0 2rem; max-width: 34rem; }
+.lede b { color: var(--ink); font-weight: 600; }
+
+.get { display: flex; flex-wrap: wrap; align-items: center; gap: .9rem 1.3rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: linear-gradient(135deg, #1ab6ff, var(--cyan-deep));
+  color: #04121f; font: inherit; font-weight: 700; font-size: 1.0625rem;
+  text-decoration: none; padding: .9rem 1.9rem;
+  border: 0; border-radius: 11px; cursor: pointer;
+  box-shadow: 0 10px 28px -12px rgba(0,180,254,.75);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -12px rgba(0,180,254,.9); }
+.btn:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+.btn svg { width: 19px; height: 19px; flex: none; }
+.get .alt { font-size: .9375rem; }
+.btn-mac { background: transparent; color: var(--cyan); border: 1.5px solid var(--cyan); box-shadow: none; }
+.btn-mac:hover { box-shadow: 0 10px 26px -14px rgba(0,180,254,.8); }
+
+.meta {
+  margin: 1.5rem 0 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: .3rem 1.3rem;
+  font-size: .8125rem; color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+.meta b { color: var(--ink-soft); font-weight: 600; }
+
+/* ---- panels, like the app's cards ---- */
+main .wrap { padding-block: 2.5rem; display: grid; gap: 1.1rem; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 1.35rem 1.45rem 1.5rem;
+}
+.phead { display: flex; align-items: flex-start; gap: .8rem; margin-bottom: 1.2rem; }
+.picon {
+  width: 38px; height: 38px; flex: none;
+  border-radius: 10px; display: grid; place-items: center;
+  background: rgba(0,180,254,.12); border: 1px solid rgba(0,180,254,.3);
+}
+.picon svg { width: 19px; height: 19px; stroke: var(--cyan); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.phead h2 { font-size: 1.0625rem; font-weight: 650; margin: 0; line-height: 1.5; }
+.phead p { font-size: .8125rem; color: var(--ink-faint); margin: 0; }
+
+/* platform rows, as in 平台授权 */
+.sites { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
+.sites li {
+  display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 10px; padding: .6rem .85rem;
+}
+.sites .name { font-weight: 650; min-width: 5.5em; }
+.sites .how { color: var(--ink-soft); font-size: .875rem; flex: 1; min-width: 0; }
+.tag {
+  font-size: .75rem; padding: .05rem .55rem; border-radius: 999px;
+  border: 1px solid currentColor; white-space: nowrap;
+}
+.tag.free { color: var(--green); }
+.tag.login { color: var(--amber); }
+
+h3 { font-size: .9375rem; margin: 0 0 .25rem; font-weight: 650; }
+p { margin: 0 0 .9rem; }
+p:last-child { margin-bottom: 0; }
+.panel > .block + .block { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line-soft); }
+.block p { color: var(--ink-soft); font-size: .9375rem; }
+
+.caution {
+  background: rgba(224,176,64,.09);
+  border: 1px solid rgba(224,176,64,.35);
+  border-radius: 10px; padding: .9rem 1rem;
+}
+.caution h3 { color: var(--amber); }
+.caution p { color: #e7d3ab; }
+
+.cmd, .hash code {
+  font-family: var(--mono); font-size: .8125rem; line-height: 1.65;
+  background: var(--panel-2); border: 1px solid var(--line-soft);
+  border-radius: 8px; padding: .7rem .8rem; color: var(--ink);
+}
+.cmd { display: block; overflow-x: auto; white-space: pre; margin: 0 0 .9rem; }
+.hash { display: grid; gap: .6rem; }
+.hash code { display: block; word-break: break-all; color: var(--cyan); }
+.copy {
+  justify-self: start;
+  background: var(--panel-2); border: 1px solid var(--line); color: var(--cyan);
+  font: inherit; font-size: .8125rem; padding: .35rem .95rem;
+  border-radius: 8px; cursor: pointer;
+}
+.copy:hover { border-color: var(--cyan); }
+.copy:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+.faq { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.25rem; }
+.faq p { color: var(--ink-soft); font-size: .9375rem; }
+
+footer { background: var(--ground-2); border-top: 1px solid var(--line-soft); }
+footer .wrap { padding-block: 1.8rem 2.4rem; }
+footer p { font-size: .8125rem; color: var(--ink-faint); max-width: 40rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+main .wrap{grid-template-columns:minmax(0,1fr)}.panel,.phead>div{min-width:0}@media(max-width:540px){.panel{padding:1rem}.sites .how{flex-basis:100%;order:3}}
+
+/* ---- 教程页补充 ---- */
+.crumb{font-size:.8125rem;color:var(--ink-faint);margin:0 0 1.4rem}
+.crumb a{color:var(--ink-soft)}
+.steps{margin:0;padding:0;list-style:none;counter-reset:s;display:grid;gap:.6rem}
+.steps li{counter-increment:s;position:relative;background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:.75rem .9rem .75rem 3.1rem;color:var(--ink-soft);font-size:.9375rem}
+.steps li::before{content:counter(s);position:absolute;left:.85rem;top:.72rem;width:1.6rem;height:1.6rem;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:.8125rem;font-weight:700;color:var(--cyan);background:rgba(0,180,254,.12);border:1px solid rgba(0,180,254,.4)}
+.steps b{color:var(--ink);font-weight:650}
+.ways{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.ways li{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:.7rem .9rem;color:var(--ink-soft);font-size:.9375rem}
+.ways b{color:var(--ink);font-weight:650}
+.more{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;font-size:.9375rem}
