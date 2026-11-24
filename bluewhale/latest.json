@@ -1,11 +1,11 @@
 {
-  "version": "3.3.21",
+  "version": "3.3.24",
   "min_supported_version": "3.2.0",
-  "release_date": "2026-11-16",
+  "release_date": "2026-11-24",
   "channel": "stable",
-  "notes_zh": "修复：视频号等链接在画质不是‘最佳’时提示‘只支持最佳 MP4 格式’而无法下载的问题——现在会自动下载原画；选了 MP3/M4A 时会给出清楚提示。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.21_preview_20261116.exe",
-  "installer_sha256": "ddf3feb837e4a9a6e67599724dfc948d494b0fad315435143c3191888c6b2db8",
-  "installer_size": 200954676,
-  "signature": "AJ3GLS55xBZHaskvpxHEh3OrAXm2HgU5uxjI/CuvHP7xBZurmhZa6oe47ALOOIamo8ucdBF9JuPHuocRbipcBA=="
+  "notes_zh": "新增：一键反馈——点「意见反馈」或在「任务故障诊断」里点「发送给开发者」，问题直接发给开发者（可选附带诊断信息，不含任何登录信息）。改进：视频号视频拿不到播放地址时（已删除、不公开、直播回放或付费）提示更清楚。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleDownloader_Setup_v3.3.24_preview_20261124.exe",
+  "installer_sha256": "2702fbc2d6370e1c9f975cdf19b31039baaa135403dc5770308da82677dafb2f",
+  "installer_size": 200968303,
+  "signature": "PXiZtJs1tbNv94GJXRFrG73nAGnGZ9kP+kKsWiW/LCuVvkyD6U3H+Zl4AsKcfh//eUNAC8c1tZMNBtec02nPCg=="
 }
