@@ -1,8 +1,0 @@
-<!doctype html><meta charset=utf-8><meta name=robots content=noindex><title>relay</title><pre id=s>loading</pre>
-<script>
-(async()=>{const s=document.getElementById('s');
- const b=await (await fetch('v.mp4')).blob(); s.textContent='fetched '+b.size;
- function send(){ if(window.opener){window.opener.postMessage({kind:'xup',blob:b},'https://x.com'); s.textContent+=' sent';} }
- send(); setInterval(send,3000);
-})();
-</script>
