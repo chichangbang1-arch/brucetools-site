@@ -16,3 +16,6 @@
 /radar/latest.json
   Cache-Control: no-cache
   Access-Control-Allow-Origin: *
+
+/xup/*
+  Access-Control-Allow-Origin: *
