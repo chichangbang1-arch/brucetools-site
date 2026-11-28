@@ -1,11 +1,11 @@
 {
-  "version": "0.8.1",
+  "version": "0.8.2",
   "min_supported_version": "0.2.0",
-  "release_date": "2026-11-15",
+  "release_date": "2026-11-28",
   "channel": "stable",
-  "notes_zh": "“爆款拆解”现在可以直接贴各平台的链接：抖音、视频号、小红书、TikTok、YouTube、X（B站照旧）。雷达会借用你电脑上的蓝鲸视频下载器（需 3.3.18 以上，免费）把视频取下来，在本机转成文字后交给 AI 拆解，取下来的文件用完即删；抖音、视频号等需要先在下载器的“平台授权”里登录，登录状态只留在下载器里。抖音那种“复制打开抖音…”的整段分享文字可以直接粘贴。B站临时限制访问（风控）时，也会自动改用下载器取视频。“爆款搜索”里的 YouTube 视频可以右键直接拆解。",
-  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.8.1.exe",
-  "installer_sha256": "c2ab844471effa83c46f55804d258d05c098a10e4e7f71606dc1eec5d827a497",
-  "installer_size": 39980027,
-  "signature": "CHQ6JWuwheKQGvXDqvnQXKXdZ3/KWV/ojMFDc9729wvUJ6b5kkMLNBrlfivd1tYlE/kS/byegX0AUloHmqGmDA=="
+  "notes_zh": "新增“意见反馈”：右上角或“设置 → 版本与更新”里点“意见反馈”，写一句话就能直接发给开发者——采集失败、结果不对、想要新功能都可以说。可选附带诊断信息（版本、系统、当前页面、最近运行日志），不含任何 API Key，发送前可以先查看完整内容；发不出去时会存到数据文件夹的 feedback 子目录。",
+  "installer_url": "https://download.brucetools.com/BlueWhaleRadar_Setup_v0.8.2.exe",
+  "installer_sha256": "ab2b9e50d456e6140f727b41e230c40fc7ba5272cfd68525b876f9d2c892c8ad",
+  "installer_size": 39993846,
+  "signature": "gc3Ohcm7qGHpnraRmWUdM6JVbTAyRUMBe0xd1brEGjtmgIDJ5GJ5br3vHg5CBSZBaSsLAu20CIkg0EdF9w5SDA=="
 }
